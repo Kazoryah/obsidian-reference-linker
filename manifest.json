@@ -1,11 +1,11 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
+	"id": "reference-linker",
+	"name": "Reference Linker",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "Link your Zotero references to your notes.",
+	"author": "Kazoryah",
+	"authorUrl": "",
+	"fundingUrl": "",
 	"isDesktopOnly": false
 }

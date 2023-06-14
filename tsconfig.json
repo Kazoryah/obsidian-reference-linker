@@ -10,6 +10,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
 	"strictNullChecks": true,
     "lib": [
       "DOM",
@@ -19,6 +20,6 @@
     ]
   },
   "include": [
-    "**/*.ts"
+    "**/**/*.ts"
   ]
 }
