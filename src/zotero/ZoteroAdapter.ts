@@ -13,14 +13,14 @@ export class ZoteroAdapter {
         return `http://${this.settings.host}:${this.settings.port}/zotserver`;
     }
 
-    public searchEverything(query: string) {
+    public searchEverything(query: string) : Promise<ZoteroItem[]> {
         return this.search([{
             condition: 'quicksearch-everything',
             value: query
         }])
     }
 
-    public search(conditions: any[]) {
+    public search(conditions: any[]) : Promise<ZoteroItem[]> {
         return request({
             url: `${this.baseUrl}/search`,
             method: 'post',
