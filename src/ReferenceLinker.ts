@@ -3,6 +3,7 @@ import { ZoteroAdapter } from './zotero/ZoteroAdapter'
 import { ReferenceLinkerSettingTab } from './settings/ReferenceLinkerSettingTab';
 import { PluginSettings, DEFAULT_SETTINGS } from './settings/ReferenceLinkerSettings';
 import { LinkerModal } from './LinkerModal';
+import { ImportModal } from './ImportModal';
 
 
 export class ReferenceLinker extends Plugin {
@@ -18,9 +19,17 @@ export class ReferenceLinker extends Plugin {
 
         this.addCommand({
             id: 'list-references',
-            name: 'List references',
+            name: 'List References',
             callback: () => {
-                new LinkerModal(this.app, this).open()
+                new LinkerModal(this.app, this).open();
+            }
+        })
+
+        this.addCommand({
+            id: 'import-annotations',
+            name: "Import Annotations",
+            editorCallback: () => {
+                new ImportModal(this.app, this).open();
             }
         })
 

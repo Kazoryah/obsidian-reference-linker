@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import { PDFDocumentProxy } from 'pdfjs-dist';
 import { TextItem } from 'pdfjs-dist/types/src/display/api';
 import { ReferenceLinker } from '../ReferenceLinker';
-import { ZoteroItem } from '../zotero/ZoteroItem';
 import { extractHighlight } from './utils';
 
 interface Highlight {
@@ -22,7 +21,7 @@ function rgbToRgba(color: number[]) {
     return `rgba(${red}, ${green}, ${blue}, 0.5)`
 }
 
-interface Annotation {
+export interface Annotation {
     highlight: Highlight,
     author: string,
     modificationDate: string, // https://www.verypdf.com/pdfinfoeditor/pdf-date-format.htm
@@ -36,9 +35,9 @@ export class PDFManager {
         this.plugin = plugin;
     }
 
-    async getHighlights(item: ZoteroItem) : Promise<Annotation[]> {
+    async getHighlights(basename: string) : Promise<Annotation[]> {
         const reader = fs.readFileSync(
-            `${this.plugin.settings.PDFFolder}/${item.getCiteKey()}.pdf`
+            `${this.plugin.settings.PDFFolder}/${basename}.pdf`
         )
         const loader = await loadPdfJs();
         const pdf : PDFDocumentProxy = await loader.getDocument(reader).promise

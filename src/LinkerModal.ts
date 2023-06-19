@@ -4,6 +4,7 @@ import * as njk from 'nunjucks';
 import { DateTime } from 'luxon';
 import { ReferenceLinker } from './ReferenceLinker';
 import { PDFManager } from './pdf/PDFManager';
+import { formatAnnotations } from './utils';
 
 export class LinkerModal extends SuggestModal<ZoteroItem> {
     plugin: ReferenceLinker;
@@ -75,18 +76,18 @@ export class LinkerModal extends SuggestModal<ZoteroItem> {
 
         const newFilePath = this.newFilePath(item.getCiteKey());
         if (this.fileExists(newFilePath)) {
-            // TODO only go to file
             new Notice("File already exists!");
+            const file = this.app.vault.getFiles().filter(file => {
+                return file.path === newFilePath
+            })[0];
+
+            this.app.workspace.getLeaf().openFile(file);
+            
             return;
         }
 
-        const annotations = await this.pdfManager.getHighlights(item);
-        render += "\n# Annotations\n\n"
-        for (const annotation of annotations) {
-            render += `<mark style="background: ${annotation.highlight.color};">`
-            render += `${annotation.highlight.text}</mark>`
-            render += `\n>_Page ${annotation.page}_\n\n`
-        }
+        const annotations = await this.pdfManager.getHighlights(item.getCiteKey());
+        render += formatAnnotations(annotations);
 
         const newFile = await this.app.vault.create(newFilePath, render);
         this.app.workspace.getLeaf().openFile(newFile);
