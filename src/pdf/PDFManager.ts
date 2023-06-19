@@ -74,7 +74,6 @@ export class PDFManager {
                     page: i,
                 })
             }
-            break;
         }
 
         return parsedAnnotations;
