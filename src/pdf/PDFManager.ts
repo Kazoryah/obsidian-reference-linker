@@ -63,7 +63,6 @@ export class PDFManager {
 
             for (const annotation of annotations) {
                 const highlightedText = extractHighlight(annotation, items)
-                console.log(annotation)
                 parsedAnnotations.push({
                     highlight: {
                         color: rgbToRgba(annotation.color),

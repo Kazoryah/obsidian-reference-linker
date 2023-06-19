@@ -1,6 +1,6 @@
 {
 	"name": "reference-linker",
-	"version": "1.1.0",
+	"version": "1.1.2",
 	"description": "Link your references and notes",
 	"main": "main.js",
 	"scripts": {
@@ -24,6 +24,7 @@
 		"esbuild": "0.17.3",
 		"fs": "^0.0.1-security",
 		"luxon": "^3.3.0",
+		"markdown-yaml-metadata-parser": "^3.0.0",
 		"nunjucks": "^3.2.4",
 		"obsidian": "latest",
 		"pdfjs-dist": "^3.7.107",
