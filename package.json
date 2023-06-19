@@ -1,6 +1,6 @@
 {
 	"name": "reference-linker",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Link your references and notes",
 	"main": "main.js",
 	"scripts": {
@@ -13,7 +13,7 @@
 	"license": "MIT",
 	"devDependencies": {
 		"@types/luxon": "^3.3.0",
-		"@types/node": "^16.11.6",
+		"@types/node": "^16.18.36",
 		"@types/nunjucks": "^3.2.2",
 		"@types/pdf-parse": "^1.1.1",
 		"@types/sprintf-js": "^1.1.2",
