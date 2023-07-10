@@ -42,7 +42,7 @@ export class ReferenceLinker extends Plugin {
             }
         })
 
-        // TODO: allows choosing file name/path for annotation loading
+        // TODO: allow choosing file name/path for annotation loading
     }
 
     onunload(): void {

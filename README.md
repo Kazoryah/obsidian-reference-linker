@@ -1,95 +1,110 @@
-# Obsidian Sample Plugin
+# Reference Linker: An Obsidian Plugin For Literature Review
+> _Author_ Romain HERMARY <<romain.hermary@uni.lu>>
 
-This is a sample plugin for Obsidian (https://obsidian.md).
 
-This project uses Typescript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in Typescript Definition format, which contains TSDoc comments describing what it does.
+This plugin is designed to ease the management of scientific article references, notes taken on those papers, and links between them.
 
-**Note:** The Obsidian API is still in early alpha and is subject to change at any time!
+Import your highlights from a **PDF** (keeping the color), create a **MarkDown** file from a template to start taking notes, include citations to papers anywhere, all that automatically.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+## Motivations
 
-## First time developing plugins?
+I wanted a way to construct a tree structure between my references, a bit like [**Docear**](https://docear.org/), but in a more complete and fresher way.
 
-Quick starting guide for new plugin devs:
+The only application I found that was suited for my needs was [**Obsidian**](https://obsidian.md/). Especially, the [*canvas*](https://obsidian.md/canvas) you can create in this application.
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+What was missing is a way for me to be able to link the notes taken on my **PDF** files, the notes I could have written, and the mind-maps/tree structures I designed to make sense of my literature review.
 
-## Releasing new releases
+None of the current plugin in **Obsidian**'s community market place was gathering all I needed so I created my own, inspired by existing ones.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+## Dependencies
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+- None for the **Obsidian** plugins, I reimplemented every part
+- Your references imported in [**Zotero**](https://www.zotero.org/)
+- [**ZotServer**](https://github.com/MunGell/ZotServer) for the **Zotero** connection
 
-## Adding your plugin to the community plugin list
 
-- Check https://github.com/obsidianmd/obsidian-releases/blob/master/plugin-review.md
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+## Examples
 
-## How to use
+## *settings*
+![Alt text](img/image-1.png)
 
-- Clone this repo.
-- `npm i` or `yarn` to install dependencies
-- `npm run dev` to start compilation in watch mode.
+## *(command)* Reference Linker: List References
+> Create a note (or go to a note if it exists) related to a reference.
 
-## Manually installing the plugin
+1. Chose the **Reference Linker: List References** command
+![Alt text](img/image.png)
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+2. Search for your reference in your **Zotero** library and select it
+![Alt text](img/image-4.png)
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint .\src\`
+3. Once selected, the plugging will create a new note, with the *citekey* as name, and import the highlights from the **PDF** with name the *citekey*.
+![Alt text](img/image-3.png)
 
-## Funding URL
+## *(command)* Reference Linker: Import Annotations
+> Import annotations from an article at the end of the current note, if the note has *citekey* as a title.
 
-You can include funding URLs where people who use your plugin can financially support it.
+1. *Note with correct name*
+![Alt text](img/image-2.png)
 
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
+2. *Select command*
+![Alt text](img/image-5.png)
 
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
+3. *PDF's highlights are imported*
+![Alt text](img/image-6.png)
+
+## *(command)* Reference Linker: Cite Simple Reference
+> Add a citation in a note, either made as a link to a note if it exists in the vault, or just insert the citekey if not.
+
+1. *Select command*
+![Alt text](img/image-7.png)
+
+2. *Select reference*
+![Alt text](img/image-8.png)
+
+3. *Citation key is inserted*
+![Alt text](img/image-11.png)
+![Alt text](img/image-9.png)
+
+
+## *template*
+```
+---
+title: {{ title | remove([':']) }}
+authors: {{ authors }}
+year: {{ date | dateFormat("yyyy") }}
+journal: {{ publicationTitle }}
+citeKey: {{ citeKey }}
+---
+
+# {{title}}
 ```
 
-If you have multiple URLs, you can also do:
+# Better BibTeX Key
 
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
+The generated citekeys have the equivalent of this [**Better BibTex**](https://retorque.re/zotero-better-bibtex/) format
+
+```
+auth(0, 1).capitalize + year + title.select(1, 1).capitalize +  title.abbr.select(2, 2).capitalize
 ```
 
-## API Documentation
 
-See https://github.com/obsidianmd/obsidian-api
+# Links
+
+As mentioned before, you might find some similar code parts as in those repositories:
+
+- [Zotero Bridge](https://github.com/vanakat/zotero-bridge)
+- [PDF Highlights](https://github.com/akaalias/obsidian-extract-pdf-highlights/tree/master)
+- [Citations](https://github.com/hans/obsidian-citation-plugin/tree/master)
+- [Extract PDF Annotations](https://github.com/munach/obsidian-extract-pdf-annotations)
+- [Highlightr](https://github.com/chetachiezikeuzor/Highlightr-Plugin)
+- [Templater](https://github.com/SilentVoid13/Templater)
+- [Zotero Better BibTex](https://github.com/retorquere/zotero-better-bibtex/blob/master/content/key-manager/formatter.ts)
+
+If you think I forgot some, please contact me so I can add it quickly.
+
+
+# Notes
+
+I developed this plugin using the [**DevContainers**](https://code.visualstudio.com/docs/devcontainers/containers) extension from **VSCode**; you can find my *very light* configuration under the `.devcontainer` folder, that way it will be easy to anyone to test/build this code.
+
+I do not plan on maintaining this repository at a high frequency. I will just add the features I need throughout the time. Feel free to fork it and improve it yourself!
