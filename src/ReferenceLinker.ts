@@ -4,6 +4,7 @@ import { ReferenceLinkerSettingTab } from './settings/ReferenceLinkerSettingTab'
 import { PluginSettings, DEFAULT_SETTINGS } from './settings/ReferenceLinkerSettings';
 import { LinkerModal } from './LinkerModal';
 import { ImportModal } from './ImportModal';
+import { SimpleCiteModal } from './SimpleCiteModal';
 
 
 export class ReferenceLinker extends Plugin {
@@ -32,8 +33,15 @@ export class ReferenceLinker extends Plugin {
                 new ImportModal(this.app, this).open();
             }
         })
+        
+        this.addCommand({
+            id: 'cite-simple-reference',
+            name: "Cite Simple Reference",
+            editorCallback: () => {
+                new SimpleCiteModal(this.app, this).open();
+            }
+        })
 
-        // TODO: add command to load annotations in current page
         // TODO: allows choosing file name/path for annotation loading
     }
 
