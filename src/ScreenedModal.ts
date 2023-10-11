@@ -63,7 +63,7 @@ export class ScreenedModal {
         const pdfs = this.pdfManager.listPDFs();
         // for (const pdf of pdfs) {
 
-        const binding = await Promise.all(pdfs.slice(0, 50).map(async pdf => {
+        const binding = await Promise.all(pdfs.map(async pdf => {
             const citeKey = pdf.split(".")[0];
             const nAnnotations = await this.pdfManager.getNumberHighlights(citeKey);
 
