@@ -77,4 +77,36 @@ export class PDFManager {
 
         return parsedAnnotations;
     }
+    
+    async getNumberHighlights(basename: string) : Promise<number> {
+        const reader = fs.readFileSync(
+            `${this.plugin.settings.PDFFolder}/${basename}.pdf`
+        )
+        const loader = await loadPdfJs();
+        const document = await loader.getDocument(reader);
+
+        const pdf : PDFDocumentProxy = await document.promise;
+
+        let totalAnnotations = 0;
+
+        for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            let annotations = await page.getAnnotations();
+
+            annotations = annotations.filter(
+                ann => ann.subtype == "Highlight"
+            )
+            
+            totalAnnotations += annotations.length;
+        }
+
+        await pdf.destroy()
+        await document.destroy();
+        
+        return totalAnnotations;
+    }
+
+    listPDFs() : string[] {
+        return fs.readdirSync(this.plugin.settings.PDFFolder)
+    }
 }

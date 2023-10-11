@@ -5,6 +5,7 @@ import { PluginSettings, DEFAULT_SETTINGS } from './settings/ReferenceLinkerSett
 import { LinkerModal } from './LinkerModal';
 import { ImportModal } from './ImportModal';
 import { SimpleCiteModal } from './SimpleCiteModal';
+import { ScreenedModal } from './ScreenedModal';
 
 
 export class ReferenceLinker extends Plugin {
@@ -39,6 +40,14 @@ export class ReferenceLinker extends Plugin {
             name: "Cite Simple Reference",
             editorCallback: () => {
                 new SimpleCiteModal(this.app, this).open();
+            }
+        })
+
+        this.addCommand({
+            id: 'update-screened-references',
+            name: 'Update Screened References',
+            callback: () => {
+                new ScreenedModal(this.app, this).open();
             }
         })
 

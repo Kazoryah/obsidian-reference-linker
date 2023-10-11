@@ -65,6 +65,11 @@ None of the current plugin in **Obsidian**'s community market place was gatherin
 ![Alt text](img/image-11.png)
 ![Alt text](img/image-9.png)
 
+## *(command)* Reference Linker: Update Screened References
+> Go through the reference PDFs folder to check which ones have annotations. Notes will be created if new annotated PDFs (with a registered reference in **Zotero** ) are found; the ones that already have a linked note will have their *Annotations* section updated.
+>
+> /!\ As of now, the *Annotations* section is presumed to be the last section, and everything after it will be deleted when updating
+
 
 ## *template*
 ```
