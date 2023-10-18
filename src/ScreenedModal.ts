@@ -46,7 +46,7 @@ export class ScreenedModal {
         ).length > 0
     }
 
-    private selectBinding(binding: number[], pdfs: string[], func: (a: number) => bool) : string[] {
+    private selectBinding(binding: number[], pdfs: string[], func: (a: number) => boolean) : string[] {
         const result : string[] = [];
         return binding.reduce(function(a, e, i) {
             if (func(e))

@@ -29,6 +29,7 @@ export class ZoteroAdapter {
         })
             .then(JSON.parse)
             .then((items: any[]) => items.filter(item => !['attachment', 'note'].includes(item.itemType)).map(item => new ZoteroItem(item)))
+            .then((items: any[]) => items.reverse())
             .catch(() => {
                 new Notice(`Couldn't connect to Zotero, please check the app is open and ZotServer is installed`);
                 return [];

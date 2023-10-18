@@ -53,7 +53,11 @@ export class LinkerModal extends SuggestModal<ZoteroItem> {
     }
 
     getSuggestions(query: string): ZoteroItem[] | Promise<ZoteroItem[]> {
-        return this.plugin.zoteroAdapter.searchEverything(query);
+        return this.plugin.zoteroAdapter.searchEverything(query)
+            .then((items: ZoteroItem[]) =>
+                Object.fromEntries(items.map(x => [x.getCiteKey(), x]))
+            )
+            .then((items) => Object.values(items));
     }
 
     private newFilePath(citeKey: string) : string {
