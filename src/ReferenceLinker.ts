@@ -20,8 +20,8 @@ export class ReferenceLinker extends Plugin {
 		this.addSettingTab(new ReferenceLinkerSettingTab(this.app, this));
 
         this.addCommand({
-            id: 'list-references',
-            name: 'List References',
+            id: 'open-reference',
+            name: 'Open Reference',
             callback: () => {
                 new LinkerModal(this.app, this).open();
             }

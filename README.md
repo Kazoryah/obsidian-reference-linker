@@ -28,10 +28,10 @@ None of the current plugin in **Obsidian**'s community market place was gatherin
 ## *settings*
 ![Alt text](img/image-1.png)
 
-## *(command)* Reference Linker: List References
+## *(command)* Reference Linker: Open Reference
 > Create a note (or go to a note if it exists) related to a reference.
 
-1. Chose the **Reference Linker: List References** command
+1. Chose the **Reference Linker: Open Reference** command
 ![Alt text](img/image.png)
 
 2. Search for your reference in your **Zotero** library and select it
@@ -73,6 +73,7 @@ None of the current plugin in **Obsidian**'s community market place was gatherin
 >
 > /!\ As of now, the *Annotations* section is presumed to be the last section, and everything after it will be deleted when updating
 
+![Alt text](img/image-12.png)
 
 ## *template*
 ```
