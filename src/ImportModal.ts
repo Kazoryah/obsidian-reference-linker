@@ -23,6 +23,10 @@ export class ImportModal {
         const annotations = await this.pdfManager.getHighlights(currentFile.basename);
         const render = formatAnnotations(annotations);
 
-        editor.replaceRange(render, {line: editor.lastLine() + 1, ch: 0});
+        await this.app.vault.process(currentFile, (data: string) => {
+            const annIdx = data.search("## Annotations");
+            data = data.slice(0, annIdx).concat(render.slice(2));
+            return data;
+        });
     }
 }

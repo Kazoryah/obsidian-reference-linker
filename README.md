@@ -42,6 +42,9 @@ None of the current plugin in **Obsidian**'s community market place was gatherin
 
 ## *(command)* Reference Linker: Import Annotations
 > Import annotations from an article at the end of the current note, if the note has *citekey* as a title.
+>
+> If some annotations are already there, it will remove the *Annotations* section
+(/!\ and everything after) to update it.
 
 1. *Note with correct name*
 ![Alt text](img/image-2.png)
